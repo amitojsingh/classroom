@@ -18,8 +18,6 @@ class Group < ActiveRecord::Base
 
   private
 
-  # Internal
-  #
   def add_member_to_github_team(repo_access)
     user = repo_access.user
 
@@ -29,8 +27,6 @@ class Group < ActiveRecord::Base
     github_team.add_team_membership(github_user.login)
   end
 
-  # Internal
-  #
   def remove_from_github_team(repo_access)
     user = repo_access.user
 

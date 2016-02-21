@@ -19,14 +19,10 @@ class Organization < ActiveRecord::Base
 
   validates :slug, uniqueness: true
 
-  # Public
-  #
   def all_assignments
     assignments + group_assignments
   end
 
-  # Public
-  #
   def github_client
     users.sample.github_client
   end

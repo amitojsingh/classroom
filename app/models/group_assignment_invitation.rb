@@ -42,8 +42,6 @@ class GroupAssignmentInvitation < ActiveRecord::Base
 
   private
 
-  # Internal
-  #
   def group(repo_access, selected_group, selected_group_title)
     group = Group.joins(:repo_accesses).find_by(grouping: grouping, repo_accesses: { id: repo_access.id })
 
@@ -53,8 +51,6 @@ class GroupAssignmentInvitation < ActiveRecord::Base
     Group.create(title: selected_group_title, grouping: grouping)
   end
 
-  # Internal
-  #
   def group_assignment_repo(invitees_group)
     group_assignment_params = { group_assignment: group_assignment, group: invitees_group }
     repo                    = GroupAssignmentRepo.find_by(group_assignment_params)

@@ -23,8 +23,6 @@ class RepoAccess < ActiveRecord::Base
     github_organization.add_membership(github_user.login)
   end
 
-  # Interal
-  #
   def accept_membership_to_github_organization
     github_organization = GitHubOrganization.new(user.github_client, organization.github_id)
     github_user         = GitHubUser.new(user.github_client, user.uid)
@@ -45,8 +43,6 @@ class RepoAccess < ActiveRecord::Base
     true # Destroy ActiveRecord object even if we fail to delete the repository
   end
 
-  # Internal
-  #
   def title
     GitHubUser.new(user.github_client, user.uid).login
   end
