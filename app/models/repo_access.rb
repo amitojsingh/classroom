@@ -1,6 +1,4 @@
 class RepoAccess < ActiveRecord::Base
-  include GitHubTeamable
-
   update_index('stafftools#repo_access') { self }
 
   belongs_to :user
@@ -15,16 +13,6 @@ class RepoAccess < ActiveRecord::Base
 
   validates :user, presence: true
   validates :user, uniqueness: { scope: :organization }
-
-  before_validation(on: :create) do
-    if organization
-      add_membership_to_github_organization
-      accept_membership_to_github_organization
-    end
-  end
-
-  before_destroy :silently_destroy_github_team
-  before_destroy :silently_remove_organization_member
 
   private
 

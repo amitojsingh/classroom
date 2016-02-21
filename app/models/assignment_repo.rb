@@ -1,7 +1,4 @@
 class AssignmentRepo < ActiveRecord::Base
-  include GitHubPlan
-  include GitHubRepoable
-
   update_index('stafftools#assignment_repo') { self }
 
   has_one :organization, -> { unscope(where: :deleted_at) }, through: :assignment
@@ -14,16 +11,6 @@ class AssignmentRepo < ActiveRecord::Base
 
   validates :github_repo_id, presence:   true
   validates :github_repo_id, uniqueness: true
-
-  before_validation(on: :create) do
-    if organization
-      create_github_repository
-      push_starter_code
-      add_user_as_collaborator
-    end
-  end
-
-  before_destroy :silently_destroy_github_repository
 
   # Public
   #

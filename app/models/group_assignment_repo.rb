@@ -1,7 +1,4 @@
 class GroupAssignmentRepo < ActiveRecord::Base
-  include GitHubPlan
-  include GitHubRepoable
-
   update_index('stafftools#group_assignment_repo') { self }
 
   has_one :organization, -> { unscope(where: :deleted_at) }, through: :group_assignment
@@ -18,16 +15,6 @@ class GroupAssignmentRepo < ActiveRecord::Base
 
   validates :group, presence: true
   validates :group, uniqueness: { scope: :group_assignment }
-
-  before_validation(on: :create) do
-    if organization
-      create_github_repository
-      push_starter_code
-      add_team_to_github_repository
-    end
-  end
-
-  before_destroy :silently_destroy_github_repository
 
   # Public
   #
