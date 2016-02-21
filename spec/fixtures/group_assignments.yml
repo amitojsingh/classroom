@@ -1,0 +1,33 @@
+private_group_assignment:
+  title: "Private group assignment"
+  slug: "private-group-assignment"
+  grouping: private_repos_org_grouping
+  creator: teacher
+  organization: private_repos_org
+  public_repo: false
+
+public_group_assignment:
+  title: "Public group assignment"
+  slug: "public-group-assignment"
+  grouping: public_repos_org_grouping
+  creator: teacher
+  organization: public_repos_org
+  public_repo: true
+
+private_group_assignment_with_starter_code:
+  title: "Private group assignment"
+  slug: "private-group-assignment"
+  grouping: private_repos_org_grouping
+  creator: teacher
+  organization: private_repos_org
+  public_repo: false
+  starter_code_repo_id: 1062897 # https://github.com/github/gitignore
+
+public_group_assignment_with_starter_code:
+  title: "Public group assignment"
+  slug: "public-group-assignment"
+  grouping: public_repos_org_grouping
+  creator: teacher
+  organization: public_repos_org
+  public_repo: true
+  starter_code_repo_id: 1062897 # https://github.com/github/gitignore

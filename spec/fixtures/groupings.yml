@@ -1,0 +1,7 @@
+private_repos_org_grouping:
+  title: "Average Joes"
+  orgnaization: private_repos_org
+
+public_repos_org_grouping:
+  title: "The A team"
+  orgnaization: public_repos_org

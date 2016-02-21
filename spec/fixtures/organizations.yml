@@ -1,0 +1,11 @@
+private_repos_org:
+  github_id: <%= ENV['TEST_CLASSROOM_PRIVATE_REPOS_ORGANIZATION_GITHUB_ID'] %>
+  title: "Closed source classroom"
+  slug: "closed-source-classroom"
+  users: teacher
+
+public_repos_org:
+  github_id: <%= ENV['TEST_CLASSROOM_PUBLIC_REPOS_ORGANIZATION_GITHUB_ID'] %>
+  title: "Open source classroom"
+  slug: "open-source-classroom"
+  users: teacher

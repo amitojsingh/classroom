@@ -1,0 +1,9 @@
+teacher:
+  uid: <%= ENV['TEST_CLASSROOM_TEACHER_GITHUB_ID'] %>
+  token: <%= ENV['TEST_CLASSROOM_TEACHER_GITHUB_TOKEN'] %>
+  site_admin: false
+
+student:
+  uid: <%= ENV['TEST_CLASSROOM_STUDENT_GITHUB_ID'] %>
+  token: <%= ENV['TEST_CLASSROOM_STUDENT_GITHUB_TOKEN'] %>
+  site_admin: false

@@ -16,22 +16,13 @@ VCR.configure do |c|
     application_github_client_id
   end
 
-  # Owner
-  c.filter_sensitive_data('<TEST_CLASSROOM_OWNER_GITHUB_ID>') do
-    classroom_owner_github_id
+  # Teacher
+  c.filter_sensitive_data('<TEST_CLASSROOM_TEACHER_GITHUB_ID>') do
+    classroom_teacher_github_id
   end
 
-  c.filter_sensitive_data('<TEST_CLASSROOM_OWNER_GITHUB_TOKEN>') do
-    classroom_owner_github_token
-  end
-
-  # Owners Org
-  c.filter_sensitive_data('<TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_ID>') do
-    classroom_owner_organization_github_id
-  end
-
-  c.filter_sensitive_data('<TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_LOGIN>') do
-    classroom_owner_organization_github_login
+  c.filter_sensitive_data('<TEST_CLASSROOM_TEACHER_GITHUB_TOKEN>') do
+    classroom_teacher_github_token
   end
 
   # Student
@@ -43,6 +34,23 @@ VCR.configure do |c|
     classroom_student_github_token
   end
 
+  # Orgs
+  c.filter_sensitive_data('<TEST_CLASSROOM_PRIVATE_REPOS_ORGANIZATION_GITHUB_ID>') do
+    classroom_private_repos_organization_github_id
+  end
+
+  c.filter_sensitive_data('<TEST_CLASSROOM_PRIVATE_REPOS_ORGANIZATION_GITHUB_LOGIN>') do
+    classroom_private_repos_organization_github_login
+  end
+
+  c.filter_sensitive_data('<TEST_CLASSROOM_PUBLIC_REPOS_ORGANIZATION_GITHUB_ID>') do
+    classroom_public_repos_organization_github_id
+  end
+
+  c.filter_sensitive_data('<TEST_CLASSROOM_PUBLIC_REPOS_ORGANIZATION_GITHUB_LOGIN') do
+    classroom_public_repos_organization_github_login
+  end
+
   c.hook_into :webmock
 end
 
@@ -50,20 +58,12 @@ def application_github_client_id
   ENV.fetch 'GITHUB_CLIENT_ID', 'i' * 20
 end
 
-def classroom_owner_github_id
-  ENV.fetch 'TEST_CLASSROOM_OWNER_GITHUB_ID', 8_675_309
+def classroom_teacher_github_id
+  ENV.fetch 'TEST_CLASSROOM_TEACHER_GITHUB_ID', 8_675_309
 end
 
-def classroom_owner_github_token
-  ENV.fetch 'TEST_CLASSROOM_OWNER_GITHUB_TOKEN', 'x' * 40
-end
-
-def classroom_owner_organization_github_id
-  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_ID', 1
-end
-
-def classroom_owner_organization_github_login
-  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_LOGIN', 'classroom-testing-org'
+def classroom_teacher_github_token
+  ENV.fetch 'TEST_CLASSROOM_TEACHER_GITHUB_TOKEN', 'x' * 40
 end
 
 def classroom_student_github_id
@@ -74,8 +74,24 @@ def classroom_student_github_token
   ENV.fetch 'TEST_CLASSROOM_STUDENT_GITHUB_TOKEN', 'q' * 40
 end
 
+def classroom_private_repos_organization_github_id
+  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_ID', 1
+end
+
+def classroom_private_repos_organization_github_token
+  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_LOGIN', 'classroom-testing-org'
+end
+
+def classroom_public_repos_organization_github_id
+  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_ID', 1
+end
+
+def classroom_public_repos_organization_github_token
+  ENV.fetch 'TEST_CLASSROOM_OWNER_ORGANIZATION_GITHUB_LOGIN', 'classroom-testing-org'
+end
+
 def oauth_client
-  Octokit::Client.new(access_token: classroom_owner_github_token)
+  Octokit::Client.new(access_token: classroom_teacher_github_token)
 end
 
 def use_vcr_placeholder_for(text, replacement)

@@ -1,0 +1,29 @@
+private_assignment:
+  title: "Private assignment"
+  slug: "private-assignment"
+  creator: teacher
+  organization: private_repos_org
+  public_repo: false
+
+public_assignment:
+  title: "Public assignment"
+  slug: "public-assignment"
+  creator: teacher
+  organization: public_repos_org
+  public_repo: true
+
+private_assignment_with_starter_code:
+  title: "Private assignment"
+  slug: "private-assignment"
+  creator: teacher
+  organization: private_repos_org
+  public_repo: false
+  starter_code_repo_id: 1062897 # https://github.com/github/gitignore
+
+public_assignment_with_starter_code:
+  title: "Public assignment"
+  slug: "public-assignment"
+  creator: teacher
+  organization: public_repos_org
+  public_repo: true
+  starter_code_repo_id: 1062897 # https://github.com/github/gitignore
