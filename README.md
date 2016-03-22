@@ -1,4 +1,6 @@
 # Classroom for GitHub
+
+[![Join the chat at https://gitter.im/amitojsingh/classroom](https://badges.gitter.im/amitojsingh/classroom.svg)](https://gitter.im/amitojsingh/classroom?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/education/classroom.svg?branch=master)](https://travis-ci.org/education/classroom)
 
 Classroom for GitHub is a [Ruby on Rails](http://rubyonrails.org/) application designed to automate repository creation and access control, making it easy for teachers to distribute starter code and collect assignments on GitHub
